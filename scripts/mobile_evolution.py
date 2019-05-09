@@ -37,12 +37,32 @@ de16_meta = de.meta(7)
 
 
 ##################
+mob_devs = (de16.CR2a_2==1)
+filtered = de.dist(de16[mob_devs], de16_meta, 'CR_DEV4', 'WghtUniversal_Core')
+filtered_pc = de.calc_pct(filtered)
+filtered_pc.to_clipboard()
+
+cr_dev4 = de.dist(de16, de16_meta, 'CR_DEV4', 'WghtUniversal_Core')
+cr_dev4_pc = de.calc_pct(cr_dev4)
+cr_dev4_pc.to_clipboard()
 
 #Look at number of mobile devs
 cr2 =  de.dist(de16, de16_meta, 'CR2a', 'WghtUniversal_Core')
 cr2.to_clipboard()
 cr2_pc = de.calc_pct(cr2)
 cr2_pc.to_clipboard()
+
+#Look at areas of development (CR2a)
+#Just women devs (filter)
+dev_female = de.dist(de16[de16['CR_DEV3']==1],de16_meta,'CR2a','WghtUniversal_Core')
+dev_female_pc=de.calc_pct(dev_female)
+dev_female_pc.to_clipboard()
+
+#Just male devs (filter)
+dev_male = de.dist(de16[de16['CR_DEV3']==3],de16_meta,'CR2a','WghtUniversal_Core')
+dev_male_pc=de.calc_pct(dev_male)
+dev_male_pc.to_clipboard()
+
 
 #Look at number of professional devs
 cr2 =  de.dist(de16, de16_meta, 'CR2b', 'WghtUniversal_Core')
@@ -60,6 +80,49 @@ web_devs = (de16.CR2a_1==1)
 filtered = de.dist(de16[web_devs], de16_meta, 'CR2a', 'WghtUniversal_Core')
 filtered_pc = de.calc_pct(filtered)
 filtered_pc.to_clipboard()
+
+# Look at the other development that desktop devs do
+desk_devs = (de16.CR2a_3==1)
+filtered = de.dist(de16[desk_devs], de16_meta, 'CR2a', 'WghtUniversal_Core')
+filtered_pc = de.calc_pct(filtered)
+filtered_pc.to_clipboard()
+
+# Look at the other development that backend devs do
+backend_devs = (de16.CR2a_4==1)
+filtered = de.dist(de16[backend_devs], de16_meta, 'CR2a', 'WghtUniversal_Core')
+filtered_pc = de.calc_pct(filtered)
+filtered_pc.to_clipboard()
+
+# Look at the other development that datasci devs do
+datasci_devs = (de16.CR2a_9==1)
+filtered = de.dist(de16[datasci_devs], de16_meta, 'CR2a', 'WghtUniversal_Core')
+filtered_pc = de.calc_pct(filtered)
+filtered_pc.to_clipboard()
+
+# Look at the other development that IoT devs do
+iot_devs = (de16.CR2a_5==1)
+filtered = de.dist(de16[iot_devs], de16_meta, 'CR2a', 'WghtUniversal_Core')
+filtered_pc = de.calc_pct(filtered)
+filtered_pc.to_clipboard()
+
+# Look at the other development that AR devs do
+devs = (de16.CR2a_6==1)
+filtered = de.dist(de16[devs], de16_meta, 'CR2a', 'WghtUniversal_Core')
+filtered_pc = de.calc_pct(filtered)
+filtered_pc.to_clipboard()
+
+# Look at the other development that VR devs do
+devs = (de16.CR2a_7==1)
+filtered = de.dist(de16[devs], de16_meta, 'CR2a', 'WghtUniversal_Core')
+filtered_pc = de.calc_pct(filtered)
+filtered_pc.to_clipboard()
+
+# Look at the other development that games devs do
+devs = (de16.CR2a_8==1)
+filtered = de.dist(de16[devs], de16_meta, 'CR2a', 'WghtUniversal_Core')
+filtered_pc = de.calc_pct(filtered)
+filtered_pc.to_clipboard()
+
 
 # How many professional mobile devs do other stuff?
 
@@ -160,7 +223,7 @@ pros_onlypc = de.calc_pct(pros_only)
 pros_onlypc.to_clipboard()
 
 
-#Look at number of mobile devs with web skills TO DO
+#Look at number of mobile devs with web skills 
 cr2 =  de.dist(de16, de16_meta, 'CR2a', 'WghtUniversal_Core')
 cr2_pc = de.calc_pct(cr2)
 cr2_pc.to_clipboard()

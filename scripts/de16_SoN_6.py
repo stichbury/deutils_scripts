@@ -85,13 +85,12 @@ regions.to_clipboard()
 #Look at areas of development (CR2a)
 #Just women devs (filter)
 dev_female = de.dist(de16[de16['CR_DEV3']==1],de16_meta,'CR2a','WghtUniversal_Core')
-dev_female_pc=de.calc_pct(dev_female)
-dev_female_pc.to_clipboard()
+dev_female.to_clipboard()
 
 #Just male devs (filter)
 dev_male = de.dist(de16[de16['CR_DEV3']==3],de16_meta,'CR2a','WghtUniversal_Core')
-dev_male_pc=de.calc_pct(dev_male)
-dev_male_pc.to_clipboard()
+dev_male.to_clipboard()
+
 
 #ML1: How are you involved in data science / machine learning (ML) / AI?
 #Just women devs (filter)

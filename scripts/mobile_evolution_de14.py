@@ -42,6 +42,31 @@ cr2 =  de.dist(de14, de14_meta, 'CR2', 'WghtUniversal_Core')
 cr2_pc = de.calc_pct(cr2)
 cr2_pc.to_clipboard()
 
+
+de14['MOBILE']  = de14[['CR2_2_1', 'CR2_2_2', 'CR2_2_3']].any(axis=1).astype(float).replace(0,np.nan)
+mob_dev=de14.MOBILE==1
+filtered = de.dist(de14[mob_dev],de14_meta,'CR2','WghtUniversal_Core')
+filtered_pc = de.calc_pct(filtered)
+filtered_pc.to_clipboard()
+
+# CR6: experience levels over survey
+cr6 = de.dist(de14, de14_meta, 'CR6', 'WghtUniversal_Core')
+cr6_pc = de.calc_pct(cr6, pct_type='row')
+cr6_pc.to_clipboard()
+
+
+#Look at age levels
+# whole dev population
+cr_dev2 = de.dist(de14, de14_meta, 'CR_DEV2', 'WghtUniversal_Core')
+cr_dev2_pc = de.calc_pct(cr_dev2)
+cr_dev2_pc.to_clipboard()
+
+cr_dev2_mobile = de.dist(de14[mob_dev],de14_meta,'CR_DEV2','WghtUniversal_Core')
+cr_dev2_mobile_pc=de.calc_pct(cr_dev2_mobile)
+cr_dev2_mobile_pc.to_clipboard()
+
+
+
 #Crosstab geographical regions against development area
 regions=de.crosstab(de14, de14_meta, 'RegionCode8','CR2', 'WghtUniversal_Core')
 regions.to_clipboard()
