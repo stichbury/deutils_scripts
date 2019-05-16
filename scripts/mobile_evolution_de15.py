@@ -37,6 +37,10 @@ de15_meta = de.meta(6)
 
 ##################
 
+#Crosstab all devs geographical regions against development area
+regions=de.crosstab(de15, de15_meta, 'RegionCode8','CR2', 'WghtUniversal_Core')
+regions.to_clipboard()
+
 #Look at number of mobile devs
 cr2 =  de.dist(de15, de15_meta, 'CR2', 'WghtUniversal_Core')
 cr2_pc = de.calc_pct(cr2)
@@ -57,6 +61,13 @@ pros_only = de.dist(de15[de15.Prof==1], de15_meta, 'MOB1', 'WghtUniversal_Core')
 pros_onlypc = de.calc_pct(pros_only)
 pros_onlypc.to_clipboard()
 
+#Non professionals
+de15['nonprof']  = (de15[['CR2_2_2', 'CR2_2_3']].any(axis=1)).astype(float).replace(0,2)
+npros_only = de.dist(de15[de15.nonprof==1], de15_meta, 'MOB1', 'WghtUniversal_Mob')
+npros_onlypc = de.calc_pct(npros_only)
+npros_onlypc.to_clipboard()
+
+
 #MOB3: What programming languages?
 mob3 = de.dist(de15, de15_meta, 'MOB3', 'WghtUniversal_Mob')
 mob3pc = de.calc_pct(mob3)
@@ -67,6 +78,11 @@ de15['Prof']  = (de15[['CR2_2_1']].any(axis=1)).astype(float).replace(0,2)
 pros_only = de.dist(de15[de15.Prof==1], de15_meta, 'MOB3', 'WghtUniversal_Core')
 pros_onlypc = de.calc_pct(pros_only)
 pros_onlypc.to_clipboard()
+
+#Non professionals
+npros_only = de.dist(de15[de15.nonprof==1], de15_meta, 'MOB3', 'WghtUniversal_Mob')
+npros_onlypc = de.calc_pct(npros_only)
+npros_onlypc.to_clipboard()
 
 #Filter mobile devs programming language choice by those that use cross platform dev tools
 de15['xplat']  = (de15[['MOB_PA_1']].any(axis=1)).astype(float).replace(0,2)
@@ -84,6 +100,11 @@ de15['Prof']  = (de15[['CR2_2_1']].any(axis=1)).astype(float).replace(0,2)
 pros_only = de.dist(de15[de15.Prof==1], de15_meta, 'MOB_PA', 'WghtUniversal_Core')
 pros_onlypc = de.calc_pct(pros_only)
 pros_onlypc.to_clipboard()
+
+# Non professionals
+npros_only = de.dist(de15[de15.nonprof==1], de15_meta, 'MOB_PA', 'WghtUniversal_Mob')
+npros_onlypc = de.calc_pct(npros_only)
+npros_onlypc.to_clipboard()
 
 #MOB2: Application category
 mob2 = de.dist(de15, de15_meta, 'MOB2', 'WghtUniversal_Mob')
