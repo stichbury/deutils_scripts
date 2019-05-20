@@ -169,10 +169,6 @@ cr_dev2_mobile = de.dist(de16[mob_dev],de16_meta,'CR_DEV2','WghtUniversal_Core')
 cr_dev2_mobile_pc=de.calc_pct(cr_dev2_mobile)
 cr_dev2_mobile_pc.to_clipboard()
 
-
-
-
-
 #Crosstab geographical regions against development area
 regions=de.crosstab(de16, de16_meta, 'RegionCode8','CR2a', 'WghtUniversal_Core')
 regions.to_clipboard()
@@ -232,34 +228,7 @@ npros_only = de.dist(de16[de16.nonprof==1], de16_meta, 'MOB_PA', 'WghtUniversal_
 npros_onlypc = de.calc_pct(npros_only)
 npros_onlypc.to_clipboard()
 
-#MOB2: Application category
-mob2 = de.dist(de16, de16_meta, 'MOB2', 'WghtUniversal_Mob')
-mob2pc = de.calc_pct(mob2)
-mob2pc.to_clipboard()
 
-# Mobile professionals only
-de16['Prof']  = (de16[['CR2b_2_1']].any(axis=1)).astype(float).replace(0,2)
-pros_only = de.dist(de16[de16.Prof==1], de16_meta, 'MOB2', 'WghtUniversal_Mob')
-pros_onlypc = de.calc_pct(pros_only)
-pros_onlypc.to_clipboard()
-
-#Filter mobile devs choice of app type by those that use cross platform dev tools
-de16['xplat']  = (de16[['MOB_PA_1']].any(axis=1)).astype(float).replace(0,2)
-mob2_xplat = de.dist(de16[de16.xplat==1], de16_meta, 'MOB2', 'WghtUniversal_Mob')
-mob2_xplatpc = de.calc_pct(mob2_xplat)
-mob2_xplatpc.to_clipboard()
-
-
-#MOB8: Audience sector
-mob8 = de.dist(de16, de16_meta, 'MOB8', 'WghtUniversal_Mob')
-mob8pc = de.calc_pct(mob8)
-mob8pc.to_clipboard()
-
-# Mobile professionals only
-de16['Prof']  = (de16[['CR2b_2_1']].any(axis=1)).astype(float).replace(0,2)
-pros_only = de.dist(de16[de16.Prof==1], de16_meta, 'MOB8', 'WghtUniversal_Mob')
-pros_onlypc = de.calc_pct(pros_only)
-pros_onlypc.to_clipboard()
 
 
 #Look at number of mobile devs with web skills 
@@ -275,70 +244,131 @@ pros_onlypc = de.calc_pct(pros_only)
 pros_onlypc.to_clipboard()
 
 
+## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** 
+#MOB2: Application category
+## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** 
 
-
-
-
-# MOB_POP questions
-pop =  de.dist(de16, de16_meta, 'MOB_POP1', 'WghtUniversal_Mob')
-pop_pc = de.calc_pct(pop)
-pop_pc.to_clipboard()
-
-pop =  de.dist(de16, de16_meta, 'MOB_POP2', 'WghtUniversal_Mob')
-pop_pc = de.calc_pct(pop)
-pop_pc.to_clipboard()
-
-pop =  de.dist(de16, de16_meta, 'MOB_POP3', 'WghtUniversal_Mob')
-pop_pc = de.calc_pct(pop)
-pop_pc.to_clipboard()
-
-# Now the same questions for the professionals only
+# Mobile professionals only
 de16['Prof']  = (de16[['CR2b_2_1']].any(axis=1)).astype(float).replace(0,2)
+#Non professionals
+de16['nonprof']  = (de16[['CR2b_2_2', 'CR2b_2_3']].any(axis=1)).astype(float).replace(0,2)
+
+# Pros
+pros_only = de.dist(de16[de16.Prof==1], de16_meta, 'MOB2', 'WghtUniversal_Mob')
+pros_onlypc = de.calc_pct(pros_only)
+pros_onlypc.to_clipboard()
+
+#Non professionals
+npros_only = de.dist(de16[de16.nonprof==1], de16_meta, 'MOB2', 'WghtUniversal_Mob')
+npros_onlypc = de.calc_pct(npros_only)
+npros_onlypc.to_clipboard()
+
+#Filter mobile devs choice of app type by those that use cross platform dev tools
+de16['xplat']  = (de16[['MOB_PA_1']].any(axis=1)).astype(float).replace(0,2)
+mob2_xplat = de.dist(de16[de16.xplat==1], de16_meta, 'MOB2', 'WghtUniversal_Mob')
+mob2_xplatpc = de.calc_pct(mob2_xplat)
+mob2_xplatpc.to_clipboard()
+
+
+#MOB8: Audience sector - pros
+mob8pros_only = de.dist(de16[de16.Prof==1], de16_meta, 'MOB8', 'WghtUniversal_Mob')
+mob8pros_onlypc = de.calc_pct(mob8pros_only)
+mob8pros_onlypc.to_clipboard()
+
+npros_only = de.dist(de16[de16.nonprof==1], de16_meta, 'MOB8', 'WghtUniversal_Mob')
+npros_onlypc = de.calc_pct(npros_only)
+npros_onlypc.to_clipboard()
+
+
+## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** 
+# MOB_POP questions
+# For the professionals only
+
 pros_only = de.dist(de16[de16.Prof==1], de16_meta, 'MOB_POP1', 'WghtUniversal_Core')
 pros_onlypc = de.calc_pct(pros_only)
 pros_onlypc.to_clipboard()
 
-de16['Prof']  = (de16[['CR2b_2_1']].any(axis=1)).astype(float).replace(0,2)
 pros_only = de.dist(de16[de16.Prof==1], de16_meta, 'MOB_POP2', 'WghtUniversal_Core')
 pros_onlypc = de.calc_pct(pros_only)
 pros_onlypc.to_clipboard()
 
-de16['Prof']  = (de16[['CR2b_2_1']].any(axis=1)).astype(float).replace(0,2)
 pros_only = de.dist(de16[de16.Prof==1], de16_meta, 'MOB_POP3', 'WghtUniversal_Core')
 pros_onlypc = de.calc_pct(pros_only)
 pros_onlypc.to_clipboard()
 
+# Now the same questions for the non-professionals only
+
+npros_only = de.dist(de16[de16.nonprof==1], de16_meta, 'MOB_POP1', 'WghtUniversal_Core')
+npros_onlypc = de.calc_pct(npros_only)
+npros_onlypc.to_clipboard()
+
+
+npros_only = de.dist(de16[de16.nonprof==1], de16_meta, 'MOB_POP2', 'WghtUniversal_Core')
+npros_onlypc = de.calc_pct(npros_only)
+npros_onlypc.to_clipboard()
+
+npros_only = de.dist(de16[de16.nonprof==1], de16_meta, 'MOB_POP3', 'WghtUniversal_Core')
+npros_onlypc = de.calc_pct(npros_only)
+npros_onlypc.to_clipboard()
+
+
+## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** 
 # Motivation
-mob4 = de.dist(de16, de16_meta, 'MOB4', 'WghtUniversal_Mob')
-mob4pc = de.calc_pct(mob4)
-mob4pc.to_clipboard()
 
 #Look at the professional mobile developers only
-de16['Prof']  = (de16[['CR2b_2_1']].any(axis=1)).astype(float).replace(0,2)
+
 pros_only = de.dist(de16[de16.Prof==1], de16_meta, 'MOB4', 'WghtUniversal_Core')
 pros_onlypc = de.calc_pct(pros_only)
 pros_onlypc.to_clipboard()
 
+npros_only = de.dist(de16[de16.nonprof==1], de16_meta, 'MOB4', 'WghtUniversal_Core')
+npros_onlypc = de.calc_pct(npros_only)
+npros_onlypc.to_clipboard()
+
 #Look at ways to make money MOB6 
-de16['Prof']  = (de16[['CR2b_2_1']].any(axis=1)).astype(float).replace(0,2)
 pros_only = de.dist(de16[de16.Prof==1], de16_meta, 'MOB6', 'WghtUniversal_Core')
-pros_onlypc = de.calc_pct(pros_only)
-pros_onlypc.to_clipboard()
+pros_only.to_clipboard()
+
+npros_only = de.dist(de16[de16.nonprof==1], de16_meta, 'MOB6', 'WghtUniversal_Core')
+npros_only.to_clipboard()
 
 #Look at revenue MOB7 
-de16['Prof']  = (de16[['CR2b_2_1']].any(axis=1)).astype(float).replace(0,2)
+
 pros_only = de.dist(de16[de16.Prof==1], de16_meta, 'MOB7', 'WghtUniversal_Core')
-pros_onlypc = de.calc_pct(pros_only)
-pros_onlypc.to_clipboard()
+pros_only.to_clipboard()
 
+npros_only = de.dist(de16[de16.nonprof==1], de16_meta, 'MOB7', 'WghtUniversal_Core')
+npros_only.to_clipboard()
+
+## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** 
 # Organisation size for pro mobile devs only
-de16['Prof']  = (de16[['CR2b_2_1']].any(axis=1)).astype(float).replace(0,2)
-pros_only = de.dist(de16[de16.Prof==1], de16_meta, 'CR3', 'WghtUniversal_Core')
-pros_onlypc = de.calc_pct(pros_only)
-pros_onlypc.to_clipboard()
+
+    pros_only = de.dist(de16[de16.Prof==1], de16_meta, 'MOB8', 'WghtUniversal_Core')
+    pros_onlypc = de.calc_pct(pros_only)
+    pros_onlypc.to_clipboard()
+
+npros_only = de.dist(de16[de16.nonprof==1], de16_meta, 'MOB8', 'WghtUniversal_Core')
+npros_onlypc = de.calc_pct(npros_only)
+npros_onlypc.to_clipboard()
+
+## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** 
 
 
-#Crosstabs
+
+
+
+
+
+
+
+
+
+
+
+
+
+## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** 
+# Crosstabs
 cross = de.crosstab(de16, de16_meta, 'MOB1', 'MOB_PA', 'WghtUniversal_Mob')
 cross.to_clipboard()
 cross_pc = de.calc_pct(cross)
