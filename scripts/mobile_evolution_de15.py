@@ -36,6 +36,23 @@ de15 = de.read_sparta_survey(6)
 de15_meta = de.meta(6)
 
 ##################
+#Non professionals
+de15['nonprof']  = (de15[['CR2_2_2', 'CR2_2_3']].any(axis=1)).astype(float).replace(0,2)
+npros_only = de.dist(de15[de15.nonprof==1], de15_meta, 'MOB2', 'WghtUniversal_Mob')
+npros_onlypc = de.calc_pct(npros_only)
+npros_onlypc.to_clipboard()
+
+
+# Mobile professionals only
+de15['Prof']  = (de15[['CR2_2_1']].any(axis=1)).astype(float).replace(0,2)
+pros_only = de.dist(de15[de15.Prof==1], de15_meta, 'MOB_POP2', 'WghtUniversal_Core')
+pros_onlypc = de.calc_pct(pros_only)
+pros_onlypc.to_clipboard()
+
+
+
+
+
 
 #Crosstab all devs geographical regions against development area
 regions=de.crosstab(de15, de15_meta, 'RegionCode8','CR2', 'WghtUniversal_Core')

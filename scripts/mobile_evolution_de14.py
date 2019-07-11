@@ -36,6 +36,22 @@ de14 = de.read_sparta_survey(5)
 de14_meta = de.meta(5)
 ##################
 
+#Non professionals
+de14['nonprof']  = (de14[['CR2_2_2', 'CR2_2_3']].any(axis=1)).astype(float).replace(0,2)
+npros_only = de.dist(de14[de14.nonprof==1], de14_meta, 'MOB4', 'WghtUniversal_Mob')
+npros_onlypc = de.calc_pct(npros_only)
+npros_onlypc.to_clipboard()
+
+# Mobile professionals only
+de14['Prof']  = (de14[['CR2_2_1']].any(axis=1)).astype(float).replace(0,2)
+pros_only = de.dist(de14[de14.Prof==1], de14_meta, 'MOB4', 'WghtUniversal_Core')
+pros_onlypc = de.calc_pct(pros_only)
+pros_onlypc.to_clipboard()
+
+
+
+
+
 #MOB3: What programming languages?
 mob3 = de.dist(de14, de14_meta, 'MOB3', 'WghtUniversal_Mob')
 mob3pc = de.calc_pct(mob3)

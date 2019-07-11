@@ -26,6 +26,28 @@ Sparta_Core = 'WghtUniversal_Core'
 de16 = de.read_sparta_survey(7)
 de16_meta = de.meta(7)
 
+
+
+IN_TAM12
+For which of the following types of development / projects are you using the resources of Intel?
+
+
+CR_DPB1
+In the past 12 months, which of the following companies' official developer websites, documentation, events or support have you used?
+
+CR_DPB2
+In the past 12 months, how often have you visited or used the official developer websites, documentation, events or support of the following companies?
+
+
+
+
+
+
+
+
+
+
+
 ##################
 
 #Look at age levels (CR_DEV2)

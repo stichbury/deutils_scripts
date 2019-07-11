@@ -327,10 +327,13 @@ npros_onlypc.to_clipboard()
 
 #Look at ways to make money MOB6 
 pros_only = de.dist(de16[de16.Prof==1], de16_meta, 'MOB6', 'WghtUniversal_Core')
-pros_only.to_clipboard()
+pros_onlypc = de.calc_pct(pros_only)
+pros_onlypc.to_clipboard()
 
 npros_only = de.dist(de16[de16.nonprof==1], de16_meta, 'MOB6', 'WghtUniversal_Core')
-npros_only.to_clipboard()
+pros_onlypc = de.calc_pct(pros_only)
+pros_onlypc.to_clipboard()
+
 
 #Look at revenue MOB7 
 
@@ -343,32 +346,44 @@ npros_only.to_clipboard()
 ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** 
 # Organisation size for pro mobile devs only
 
-    pros_only = de.dist(de16[de16.Prof==1], de16_meta, 'MOB8', 'WghtUniversal_Core')
-    pros_onlypc = de.calc_pct(pros_only)
-    pros_onlypc.to_clipboard()
+pros_only = de.dist(de16[de16.Prof==1], de16_meta, 'MOB8', 'WghtUniversal_Core')
+pros_onlypc = de.calc_pct(pros_only)
+pros_onlypc.to_clipboard()
 
-npros_only = de.dist(de16[de16.nonprof==1], de16_meta, 'MOB8', 'WghtUniversal_Core')
+npros_only = de.dist(de16[de16.nonprof==1], de16_meta, 'WEB10', 'WghtUniversal_Core')
 npros_onlypc = de.calc_pct(npros_only)
 npros_onlypc.to_clipboard()
 
 ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** 
 # Crosstabs
+## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** ## ** 
+
+
+cross = de.crosstab(de16[de16.Prof==1], de16_meta, 'MOB2', 'MOB8', 'WghtUniversal_Mob')
+cross.to_clipboard()
+
+cross = de.crosstab(de16[de16.Prof==1], de16_meta, 'MOB2', 'MOB7', 'WghtUniversal_Mob')
+cross.to_clipboard()
+
+cross = de.crosstab(de16[de16.Prof==1], de16_meta, 'MOB_POP3', 'MOB7', 'WghtUniversal_Mob')
+cross.to_clipboard()
+
+cross = de.crosstab(de16[de16.Prof==1], de16_meta, 'MOB6', 'MOB7', 'WghtUniversal_Mob')
+cross.to_clipboard()
+
+
+cross = de.crosstab(de16[de16.nonprof==1], de16_meta, 'MOB6', 'MOB7', 'WghtUniversal_Mob')
+cross.to_clipboard()
+
+
+
+
+
+
+
+
+
+
 cross = de.crosstab(de16, de16_meta, 'MOB1', 'MOB_PA', 'WghtUniversal_Mob')
 cross.to_clipboard()
 cross_pc = de.calc_pct(cross)
